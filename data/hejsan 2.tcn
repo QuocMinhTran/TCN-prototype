@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?><Network>
+  <Hosts>
+    <Host modelId="1" name="ecu 1">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu 2">
+      <EthernetPorts>
+        <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port1" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu 3">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu 4">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+  </Hosts>
+  <Switches>
+    <Switch modelId="0" name="switch 1">
+      <EthernetPort name="Port1" priority="0" priorityMode="TAG" schedulingPolicy="Strict Priority" speed="100000000">
+      </EthernetPort>
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port2" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+      <EthernetPort name="Port3" priority="0" priorityMode="TAG" schedulingPolicy="Strict Priority" speed="100000000">
+      </EthernetPort>
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port4" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+    </Switch>
+    <Switch modelId="0" name="switch 2">
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port1" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port2" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port3" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+      <EthernetPort bandwidthFractionClassA="0.25" bandwidthFractionClassB="0.25" name="Port4" priority="0" priorityMode="IP" schedulingPolicy="Credit Based Shaper" speed="100000000">
+      </EthernetPort>
+    </Switch>
+  </Switches>
+  <Links>
+    <Link name="L1">
+      <EthernetPort name="ecu 1.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port1">
+      </EthernetPort>
+    </Link>
+    <Link name="L2">
+      <EthernetPort name="ecu 2.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port2">
+      </EthernetPort>
+    </Link>
+    <Link name="L3">
+      <EthernetPort name="ecu 3.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port3">
+      </EthernetPort>
+    </Link>
+    <Link name="L4">
+      <EthernetPort name="ecu 4.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port1">
+      </EthernetPort>
+    </Link>
+    <Link name="L5">
+      <EthernetPort name="switch 1.Port4">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port2">
+      </EthernetPort>
+    </Link>
+    <Link name="L6">
+      <EthernetPort name="cam 1.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port3">
+      </EthernetPort>
+    </Link>
+    <Link name="L7">
+      <EthernetPort name="cam 2.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port4">
+      </EthernetPort>
+    </Link>
+  </Links>
+  <DataFrames>
+    <DataFrame bitSize="3000" name="data 1" offset="0" period="0.0003" priority="0" source="ecu 1">
+      <Path name="data 1-ecu 2">
+        <Node name="ecu 1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="ecu 2" sequenceNumber="3">
+        </Node>
+      </Path>
+      <Path name="data 1-ecu 4">
+        <Node name="ecu 1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="switch 2" sequenceNumber="3">
+        </Node>
+        <Node name="ecu 4" sequenceNumber="4">
+        </Node>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="4000" name="data 2" offset="0" period="0.0002" priority="5" source="ecu 2" vlanId="4">
+      <Path name="data 2-ecu 4">
+        <Node name="ecu 2" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="switch 2" sequenceNumber="3">
+        </Node>
+        <Node name="ecu 4" sequenceNumber="4">
+        </Node>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="4000" name="data 3" offset="0" period="0.0005" priority="0" source="ecu 3">
+      <Path name="data 3-ecu 2">
+        <Node name="ecu 3" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="ecu 2" sequenceNumber="3">
+        </Node>
+      </Path>
+      <Path name="data 3-ecu 4">
+        <Node name="ecu 3" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="switch 2" sequenceNumber="3">
+        </Node>
+        <Node name="ecu 4" sequenceNumber="4">
+        </Node>
+      </Path>
+    </DataFrame>
+  </DataFrames>
+  <Vlans>
+    <Vlan name="VLAN1" priority="0" vlanId="1">
+      <EthernetPort name="switch 1.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port2" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port3" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port4" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port2" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port3" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port4" tagged="true">
+      </EthernetPort>
+    </Vlan>
+    <Vlan name="VLAN-data 2" priority="0" vlanId="4">
+      <EthernetPort name="ecu 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="ecu 4.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port2" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port4" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port2" tagged="true">
+      </EthernetPort>
+    </Vlan>
+    <Vlan name="VLAN-video stream1" priority="0" vlanId="2">
+      <EthernetPort name="cam 1.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="ecu 4.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port3" tagged="true">
+      </EthernetPort>
+    </Vlan>
+    <Vlan name="VLAN-video stream 2" priority="0" vlanId="3">
+      <EthernetPort name="cam 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="ecu 4.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 2.Port4" tagged="true">
+      </EthernetPort>
+    </Vlan>
+  </Vlans>
+  <Timers>
+    <Timer dataFrame="video stream1" name="timer_cam1" targetMacAddress="">
+      <TimeSampler processor="switch 2.Port1.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 2.Port3.II.Rx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="video stream 2" name="timer_cam2" targetMacAddress="">
+      <TimeSampler processor="switch 2.Port1.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 2.Port4.II.Rx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="data 1" name="timer1" targetMacAddress="">
+      <TimeSampler processor="switch 1.Port2.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 1.Port1.II.Rx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="data 2" name="timer2" targetMacAddress="">
+      <TimeSampler processor="switch 2.Port1.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 1.Port2.II.Rx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="data 3" name="timer3" targetMacAddress="">
+      <TimeSampler processor="switch 1.Port3.II.Rx">
+      </TimeSampler>
+      <TimeSampler processor="switch 1.Port2.EI.Tx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="data 1" name="timer4" targetMacAddress="">
+      <TimeSampler processor="switch 2.Port1.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 1.Port1.II.Rx">
+      </TimeSampler>
+    </Timer>
+    <Timer dataFrame="data 3" name="timer5" targetMacAddress="">
+      <TimeSampler processor="switch 2.Port1.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="switch 1.Port3.II.Rx">
+      </TimeSampler>
+    </Timer>
+  </Timers>
+  <Sensors>
+    <Sensor modelId="0" name="cam 1">
+      <EthernetPort name="Port1" speed="100000000"/>
+    </Sensor>
+    <Sensor modelId="0" name="cam 2">
+      <EthernetPort name="Port1" speed="100000000"/>
+    </Sensor>
+  </Sensors>
+  <Streams>
+    <Stream name="video stream1" offset="0" source="cam 1" vlanId="2">
+      <Path name="video stream1-ecu 4">
+        <Node name="cam 1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 2" sequenceNumber="2">
+        </Node>
+        <Node name="ecu 4" sequenceNumber="3">
+        </Node>
+      </Path>
+    </Stream>
+    <Stream name="video stream 2" offset="0" source="cam 2" vlanId="3">
+      <Path name="video stream 2-ecu 4">
+        <Node name="cam 2" sequenceNumber="1">
+        </Node>
+        <Node name="switch 2" sequenceNumber="2">
+        </Node>
+        <Node name="ecu 4" sequenceNumber="3">
+        </Node>
+      </Path>
+    </Stream>
+  </Streams>
+</Network>

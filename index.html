@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TCN topology</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="TCN testing">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="TCN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+    <link type="text/css" rel="stylesheet" href="css/contextmenu.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+
+    <!-- library for gojs-->
+    <!--<script src="lib/gojs/release/go-debug.js"></script>-->
+    <script src="js/fileio.js"></script>
+    <script src="js/helper.js"></script>
+    <!--<script src="js/gojs-impl.js"></script>-->
+
+    <!-- library for draw2d-->
+    <script src="lib/draw2d.min/lib/shifty.js"></script>
+    <script src="lib/draw2d.min/lib/raphael.js"></script>
+    <script src="lib/draw2d.min/lib/jquery-1.12.0.min.js"></script>
+    <script src="lib/draw2d.min/lib/jquery.autoresize.js"></script>
+    <script src="lib/draw2d.min/lib/jquery-touch_punch.js"></script>
+    <script src="lib/draw2d.min/lib/jquery.contextmenu.js"></script>
+    <script src="lib/draw2d.min/lib/rgbcolor.js"></script>
+    <script src="lib/draw2d.min/lib/canvg.js"></script>
+    <script src="lib/draw2d.min/lib/StackBlur.js"></script>
+    <script src="lib/draw2d.min/lib/Class.js"></script>
+    <script src="lib/draw2d.min/lib/json2.js"></script>
+    <script src="lib/draw2d.min/lib/pathfinding-browser.min.js"></script>
+
+    <script src="lib/draw2d.min/src/draw2d.js"></script>
+    <script src="js/draw2d-impl.js"></script>
+    <script src="css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="lib/lodash/lodash.min.js"></script>
+
+    <!-- library fpr visjs
+    <script src="lib/vis-4.18.1/dist/vis.js"></script>
+    <script src="js/visjs-impl.js"></script>
+    <link href="lib/vis-4.18.1/dist/vis.min.css" rel="stylesheet" type="text/css"/>-->
+</head>
+
+<body>
+    <a href=""><img src="data/newlogo.png"class="img-thumbnail" id="logo"/></a>
+    <div id="toolbar" class="navbar-default"></div>
+    <form id="chosenForm" class="form-horizontal">
+        <div class="form-group">
+            <input id="chosenFile" type="file" accept=".xml,.tcn" class="col-md-4" onchange="loadFile(this.files, loadCallback)" />
+            <div class="col-md-4 introduction" >Please choose a file or begin with the first object</div>
+            <input type="button" value="Save" class="col-md-2 btn btn-primary" onclick="saveProcess()"/>
+            <input type="button" value="Download" class="col-md-2 btn btn-primary" onclick="download('hejsan.tcn')" />
+        </div>
+    </form>    
+    <div class="clearfix">
+        <div id="infoPanel" class="info" style="width: 25%;height: 700px;float:right;"></div>
+        <div id="myDiagramDiv" style="width: 75%;height: 700px;background-color: #DAE4E4;"></div>
+    </div>         
+    <script>
+        var output;
+        var jsonObj;
+        var xmlObj;
+        var app;
+
+        $(function () {
+            app = new example.InitRenderer();                   
+        });
+
+        function loadCallback(e) {
+            outputText = e.target.result
+            console.log(outputText);
+            var x2js = new X2JS({ useDoubleQuotes: true });
+            jsonObj = x2js.xml_str2json(outputText);            
+            clearInfoPanel();
+            clearRenderer(); 
+            pos = [{
+                x:0,
+                y:0
+            }];           
+            fillRenderer(jsonObj);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><Network>
+  <Sensors>
+    <Sensor modelId="0" name="sd">
+      <EthernetPort name="Port1" speed="100000000"/>
+    </Sensor>
+  </Sensors>
+  <Hosts>
+    <Host modelId="1" name="ret">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="10000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000435" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000043" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="easd">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="10000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000003" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000024" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+  </Hosts>
+  <Switches>
+    <Switch modelId="1" name="dsfsd">
+      <EthernetPort name="Port1" priority="0" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000">
+      </EthernetPort>
+      <EthernetPort name="Port2" priority="0" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000">
+      </EthernetPort>
+      <EthernetPort name="Port3" priority="0" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000">
+      </EthernetPort>
+    </Switch>
+  </Switches>
+  <Links>
+    <Link name="dsfsd.Port1--ret.Port1">
+      <EthernetPort name="dsfsd.Port1">
+      </EthernetPort>
+      <EthernetPort name="ret.Port1">
+      </EthernetPort>
+    </Link>
+    <Link name="dsfsd.Port2--sd.Port1">
+      <EthernetPort name="dsfsd.Port2">
+      </EthernetPort>
+      <EthernetPort name="sd.Port1">
+      </EthernetPort>
+    </Link>
+    <Link name="dsfsd.Port3--easd.Port1">
+      <EthernetPort name="dsfsd.Port3">
+      </EthernetPort>
+      <EthernetPort name="easd.Port1">
+      </EthernetPort>
+    </Link>
+  </Links>
+  <DataFrames>
+    <DataFrame bitSize="34" name="sdf" offset="432" priority="1" source="ret" vlanId="32">
+      <Path name="sdf - sd">
+        <Node name="ret" sequenceNumber="1">
+        </Node>
+        <Node name="dsfsd" sequenceNumber="2">
+        </Node>
+        <Node name="sd" sequenceNumber="3">
+        </Node>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="43" name="dsf" offset="43" priority="1" source="ret">
+      <Path name="dsf - easd">
+        <Node name="ret" sequenceNumber="1">
+        </Node>
+        <Node name="dsfsd" sequenceNumber="2">
+        </Node>
+        <Node name="easd" sequenceNumber="3">
+        </Node>
+      </Path>
+      <Path name="dsf - sd">
+        <Node name="ret" sequenceNumber="1">
+        </Node>
+        <Node name="dsfsd" sequenceNumber="2">
+        </Node>
+        <Node name="sd" sequenceNumber="3">
+        </Node>
+      </Path>
+    </DataFrame>
+  </DataFrames>
+  <Streams>
+    <Stream name="dsf" offset="43" source="sd">
+      <Path name="dsf - ret">
+        <Node name="sd" sequenceNumber="1">
+        </Node>
+        <Node name="dsfsd" sequenceNumber="2">
+        </Node>
+        <Node name="ret" sequenceNumber="3">
+        </Node>
+      </Path>
+      <Path name="dsf - easd">
+        <Node name="sd" sequenceNumber="1">
+        </Node>
+        <Node name="dsfsd" sequenceNumber="2">
+        </Node>
+        <Node name="easd" sequenceNumber="3">
+        </Node>
+      </Path>
+    </Stream>
+  </Streams>
+  <Vlans>
+    <Vlan name="wqe" priority="3" vlanId="32">
+      <EthernetPort name="dsfsd.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="dsfsd.Port2" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="ret.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="sd.Port1" tagged="true">
+      </EthernetPort>
+    </Vlan>
+  </Vlans>
+  <Timers>
+    <Timer dataFrame="sdf" name="sad" targetMacAddress="">
+      <TimeSampler processor="dsfsd.Port2.EI.Tx">
+      </TimeSampler>
+      <TimeSampler processor="dsfsd.Port1.II.Rx">
+      </TimeSampler>
+    </Timer>
+  </Timers>
+</Network>

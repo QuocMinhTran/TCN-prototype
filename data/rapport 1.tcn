@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><Network>
+  <Hosts>
+    <Host modelId="1" name="ecu1">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="10000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000121" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000032" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu2">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="10000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000002" name="IP Stack">
+        </SoftwareComponent>
+        <SoftwareComponent executionTime="0.000023" name="Routing Module">
+        </SoftwareComponent>
+      </SoftwareComponents>
+    </Host>
+  </Hosts>
+  <Switches>
+    <Switch modelId="1" name="switch 1">
+      <EthernetPort name="Port1" priority="1" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000"/>
+      <EthernetPort name="Port2" priority="0" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000"/>
+      <EthernetPort name="Port3" priority="0" schedulingPolicy="Credit Based Shaper" priorityMode="TAG" speed="10000000"/>
+    </Switch>
+  </Switches>
+  <Sensors>
+    <Sensor modelId="0" name="cam 1">
+      <EthernetPort name="Port1" speed="100000000"/>
+    </Sensor>
+  </Sensors>
+  <Links>
+    <Link name="ecu1.Port1--switch 1.Port1">
+      <EthernetPort name="ecu1.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port1">
+      </EthernetPort>
+    </Link>
+    <Link name="ecu2.Port1--switch 1.Port3">
+      <EthernetPort name="ecu2.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port3">
+      </EthernetPort>
+    </Link>
+    <Link name="cam 1.Port1--switch 1.Port2">
+      <EthernetPort name="cam 1.Port1">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port2">
+      </EthernetPort>
+    </Link>
+  </Links>
+  <DataFrames>
+    <DataFrame bitSize="342" name="data 1" offset=" 3" priority="1" source="ecu1" vlanId="2">
+      <Path name="data 1 - ecu2">
+        <Node name="ecu1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="ecu2" sequenceNumber="3">
+        </Node>
+      </Path>
+      <Path name="data 1 - ecu2">
+        <Node name="ecu1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="ecu2" sequenceNumber="3">
+        </Node>
+      </Path>
+    </DataFrame>
+  </DataFrames>
+  <Streams>
+    <Stream name="stream1" offset="653" source="cam 1">
+      <Path name="stream1 - ecu1">
+        <Node name="cam 1" sequenceNumber="1">
+        </Node>
+        <Node name="switch 1" sequenceNumber="2">
+        </Node>
+        <Node name="ecu1" sequenceNumber="3">
+        </Node>
+      </Path>
+    </Stream>
+  </Streams>
+  <Timers>
+    <Timer dataFrame="data 1" name="242" targetMacAddress="">
+      <TimeSampler processor="switch 1.Port3.EI.Tx"/>
+      <TimeSampler processor="switch 1.Port1.II.Rx"/>
+    </Timer>
+  </Timers>
+  <Vlans>
+    <Vlan name="vlan 1" priority="1" vlanId="2">
+      <EthernetPort name="ecu1.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="ecu2.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port1" tagged="true">
+      </EthernetPort>
+      <EthernetPort name="switch 1.Port3" tagged="true">
+      </EthernetPort>
+    </Vlan>
+  </Vlans>
+</Network>

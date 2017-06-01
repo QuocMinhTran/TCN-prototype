@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network>
+  <Vlans>
+    <Vlan name="VLAN1" priority="0" vlanId="1">
+      <EthernetPort name="S1.Port1" tagged="true"/>
+      <EthernetPort name="S1.Port2" tagged="true"/>
+      <EthernetPort name="S1.Port3" tagged="true"/>
+      <EthernetPort name="S1.Port4" tagged="true"/>
+      <EthernetPort name="S1.Port5" tagged="true"/>
+      <EthernetPort name="S1.Port6" tagged="true"/>
+      <EthernetPort name="S2.Port1" tagged="true"/>
+      <EthernetPort name="S2.Port2" tagged="true"/>
+      <EthernetPort name="S2.Port3" tagged="true"/>
+      <EthernetPort name="S2.Port4" tagged="true"/>
+      <EthernetPort name="S2.Port5" tagged="true"/>
+      <EthernetPort name="S3.Port1" tagged="true"/>
+      <EthernetPort name="S3.Port2" tagged="true"/>
+      <EthernetPort name="S3.Port3" tagged="true"/>
+      <EthernetPort name="S3.Port4" tagged="true"/>
+      <EthernetPort name="S3.Port5" tagged="true"/>
+      <EthernetPort name="S3.Port6" tagged="true"/>
+    </Vlan>
+  </Vlans>
+  <Switches>
+    <Switch modelId="0" name="S1">
+      <EthernetPort name="Port1" priority="0" priorityMode="IP" schedulingPolicy="TAS" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2">
+        <GateOperations>
+          <GateOperation duration="0.000117" states="oooo" />
+          <GateOperation duration="0.000020" states="oCCC" />
+          <GateOperation duration="0.000080" states="oooo" />
+          <GateOperation duration="0.000020" states="oCCC" />
+          <GateOperation duration="0.000263" states="oooo" />
+        </GateOperations>
+      </EthernetPort>
+      <EthernetPort name="Port2" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port3" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port4" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port5" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port6" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+    </Switch>
+    <Switch modelId="0" name="S2">
+      <EthernetPort name="Port1" priority="0" priorityMode="IP" schedulingPolicy="TAS" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2">
+        <GateOperations>
+          <GateOperation duration="0.000317" states="oooo" />
+          <GateOperation duration="0.000020" states="oCCC" />
+          <GateOperation duration="0.000080" states="oooo" />
+          <GateOperation duration="0.000020" states="oCCC" />
+          <GateOperation duration="0.000063" states="oooo" />
+        </GateOperations>
+      </EthernetPort>
+      <EthernetPort name="Port2" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port3" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port4" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port5" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+    </Switch>
+    <Switch modelId="0" name="S3">
+      <EthernetPort name="Port1" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port2" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port3" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port4" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port5" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+      <EthernetPort name="Port6" priority="0" priorityMode="IP" schedulingPolicy="AVB" speed="100000000" bandwidthFractionClassA="0.8" bandwidthFractionClassB="0.2" />
+    </Switch>
+  </Switches>
+  <Links>
+    <Link name="L1">
+      <EthernetPort name="S2.Port1"/>
+      <EthernetPort name="S3.Port1"/>
+    </Link>
+    <Link name="L10">
+      <EthernetPort name="N7.Port1"/>
+      <EthernetPort name="S2.Port5"/>
+    </Link>
+    <Link name="L11">
+      <EthernetPort name="N8.Port1"/>
+      <EthernetPort name="S3.Port2"/>
+    </Link>
+    <Link name="L12">
+      <EthernetPort name="N9.Port1"/>
+      <EthernetPort name="S3.Port3"/>
+    </Link>
+    <Link name="L13">
+      <EthernetPort name="N10.Port1"/>
+      <EthernetPort name="S3.Port4"/>
+    </Link>
+    <Link name="L14">
+      <EthernetPort name="N11.Port1"/>
+      <EthernetPort name="S3.Port5"/>
+    </Link>
+    <Link name="L15">
+      <EthernetPort name="Wifi.Port1"/>
+      <EthernetPort name="S3.Port6"/>
+    </Link>
+    <Link name="L2">
+      <EthernetPort name="S1.Port1"/>
+      <EthernetPort name="S2.Port2"/>
+    </Link>
+    <Link name="L3">
+      <EthernetPort name="N0.Port1"/>
+      <EthernetPort name="S1.Port2"/>
+    </Link>
+    <Link name="L4">
+      <EthernetPort name="N1.Port1"/>
+      <EthernetPort name="S1.Port3"/>
+    </Link>
+    <Link name="L5">
+      <EthernetPort name="N2.Port1"/>
+      <EthernetPort name="S1.Port4"/>
+    </Link>
+    <Link name="L6">
+      <EthernetPort name="N3.Port1"/>
+      <EthernetPort name="S1.Port5"/>
+    </Link>
+    <Link name="L7">
+      <EthernetPort name="N4.Port1"/>
+      <EthernetPort name="S1.Port6"/>
+    </Link>
+    <Link name="L8">
+      <EthernetPort name="N5.Port1"/>
+      <EthernetPort name="S2.Port3"/>
+    </Link>
+    <Link name="L9">
+      <EthernetPort name="N6.Port1"/>
+      <EthernetPort name="S2.Port4"/>
+    </Link>
+  </Links>
+  <Hosts>
+    <Host modelId="1" name="N0">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:00" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N1">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:01" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N10">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:10" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N11">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:11" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N2">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:02" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N3">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:03" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N4">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:04" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N5">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:05" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N6">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:06" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N7">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:07" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N8">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:08" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="N9">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:09" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="Wifi">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000" macAddress="00:00:c0:a8:00:12" />
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.00002" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.00002" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+  </Hosts>
+  <DataFrames>
+    <DataFrame bitSize="688" name="N3_N7_CDT" offset="0.0001" period="0.000500" priority="7" source="N3">
+      <Path name="N3_N7_CDT-N7">
+        <Node name="N3" sequenceNumber="1"/>
+        <Node name="S1" sequenceNumber="2"/>
+        <Node name="S2" sequenceNumber="3"/>
+        <Node name="N7" sequenceNumber="4"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="688" name="N4_N7_CDT" offset="0.0002" period="0.000500" priority="7" source="N4">
+      <Path name="N4_N7_CDT-N7">
+        <Node name="N4" sequenceNumber="1"/>
+        <Node name="S1" sequenceNumber="2"/>
+        <Node name="S2" sequenceNumber="3"/>
+        <Node name="N7" sequenceNumber="4"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="688" name="N5_N9_CDT" offset="0.0003" period="0.000500" priority="7" source="N5">
+      <Path name="N5_N9_CDT-N9">
+        <Node name="N5" sequenceNumber="1"/>
+        <Node name="S2" sequenceNumber="2"/>
+        <Node name="S3" sequenceNumber="3"/>
+        <Node name="N9" sequenceNumber="4"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="688" name="N6_N9_CDT" offset="0.0004" period="0.000500" priority="7" source="N6">
+      <Path name="N6_N9_CDT-N9">
+        <Node name="N6" sequenceNumber="1"/>
+        <Node name="S2" sequenceNumber="2"/>
+        <Node name="S3" sequenceNumber="3"/>
+        <Node name="N9" sequenceNumber="4"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="1712" name="N1_N8_A" offset="" period="0.000125" priority="6" source="N1">
+      <Path name="N1_N8_A-N8">
+        <Node name="N1" sequenceNumber="1"/>
+        <Node name="S1" sequenceNumber="2"/>
+        <Node name="S2" sequenceNumber="3"/>
+        <Node name="S3" sequenceNumber="4"/>
+        <Node name="N8" sequenceNumber="5"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="1712" name="N2_N8_A" offset="" period="0.000125" priority="6" source="N2">
+      <Path name="N2_N8_A-N8">
+        <Node name="N2" sequenceNumber="1"/>
+        <Node name="S1" sequenceNumber="2"/>
+        <Node name="S2" sequenceNumber="3"/>
+        <Node name="S3" sequenceNumber="4"/>
+        <Node name="N8" sequenceNumber="5"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="1712" name="N0_N10_B" offset="" period="0.000250" priority="5" source="N0">
+      <Path name="N0_N10-N10">
+        <Node name="N0"  sequenceNumber="1"/>
+        <Node name="S1"  sequenceNumber="2"/>
+        <Node name="S2"  sequenceNumber="3"/>
+        <Node name="S3"  sequenceNumber="4"/>
+        <Node name="N10" sequenceNumber="5"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="1712" name="N11_Wifi_B" offset="" period="0.000250" priority="5" source="N11">
+      <Path name="N11_Wifi-Wifi">
+        <Node name="N11"  sequenceNumber="1"/>
+        <Node name="S3"   sequenceNumber="2"/>
+        <Node name="Wifi" sequenceNumber="3"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="1712" name="Wifi_N10_B" offset="" period="0.000250" priority="5" source="Wifi">
+      <Path name="Wifi_N10-N10">
+        <Node name="Wifi" sequenceNumber="1"/>
+        <Node name="S3"   sequenceNumber="2"/>
+        <Node name="N10"  sequenceNumber="3"/>
+      </Path>
+    </DataFrame>
+  </DataFrames>
+  <Timers>
+    <Timer dataFrame="N0_N10_B" name="N0_N10_B" targetMacAddress="">
+      <TimeSampler processor="S3.Port4.EI.Tx"/>
+      <TimeSampler processor="S1.Port2.II.Rx"/>
+    </Timer>
+    <Timer dataFrame="N11_Wifi_B" name="N11_Wifi_B" targetMacAddress="">
+      <TimeSampler processor="S3.Port6.EI.Tx"/>
+      <TimeSampler processor="S3.Port5.II.Rx"/>
+    </Timer>
+    <Timer dataFrame="Wifi_N10_B" name="Wifi_N10_B" targetMacAddress="">
+      <TimeSampler processor="S3.Port4.EI.Tx"/>
+      <TimeSampler processor="S3.Port6.II.Rx"/>
+    </Timer>
+    <Timer dataFrame="N1_N8_A" name="N1_N8_A" targetMacAddress="">
+      <TimeSampler processor="S1.Port3.II.Rx"/>
+      <TimeSampler processor="S3.Port2.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N1_N8_A" name="N1_N8_A_S1" targetMacAddress="">
+      <TimeSampler processor="S1.Port3.II.Rx"/>
+      <TimeSampler processor="S1.Port1.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N1_N8_A" name="N1_N8_A_S2" targetMacAddress="">
+      <TimeSampler processor="S2.Port2.II.Rx"/>
+      <TimeSampler processor="S2.Port1.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N1_N8_A" name="N1_N8_A_S3" targetMacAddress="">
+      <TimeSampler processor="S3.Port1.II.Rx"/>
+      <TimeSampler processor="S3.Port2.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N2_N8_A" name="N2_N8_A" targetMacAddress="">
+      <TimeSampler processor="S3.Port2.EI.Tx"/>
+      <TimeSampler processor="S1.Port4.II.Rx"/>
+    </Timer>
+    <Timer dataFrame="N3_N7_CDT" name="N3_N7_CDT" targetMacAddress="">
+      <TimeSampler processor="S1.Port5.II.Rx"/>
+      <TimeSampler processor="S2.Port5.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N3_N7_CDT" name="N3_N7_CDT_S1" targetMacAddress="">
+      <TimeSampler processor="S1.Port5.II.Rx"/>
+      <TimeSampler processor="S1.Port1.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N4_N7_CDT" name="N4_N7_CDT" targetMacAddress="">
+      <TimeSampler processor="S2.Port5.EI.Tx"/>
+      <TimeSampler processor="S1.Port6.II.Rx"/>
+    </Timer>
+    <Timer dataFrame="N5_N9_CDT" name="N5_N9_CDT" targetMacAddress="">
+      <TimeSampler processor="S2.Port3.II.Rx"/>
+      <TimeSampler processor="S3.Port3.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="N6_N9_CDT" name="N6_N9_CDT">
+      <TimeSampler processor="S2.Port4.II.Rx"/>
+      <TimeSampler processor="S3.Port3.EI.Tx"/>
+    </Timer>
+  </Timers>
+</Network>

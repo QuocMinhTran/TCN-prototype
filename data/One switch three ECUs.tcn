@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><Network>
+  <Hosts>
+    <Host modelId="1" name="ecu 1">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu 2">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+    <Host modelId="1" name="ecu 3">
+      <EthernetPorts>
+        <EthernetPort name="Port1" speed="100000000"/>
+      </EthernetPorts>
+      <SoftwareComponents>
+        <SoftwareComponent executionTime="0.000022" name="IP Stack"/>
+        <SoftwareComponent executionTime="0.000022" name="Routing Module"/>
+      </SoftwareComponents>
+    </Host>
+  </Hosts>
+  <Switches>
+    <Switch modelId="0" name="switch 1">
+      <EthernetPort name="Port1" priority="0" priorityMode="TAG" schedulingPolicy="Strict Priority" speed="100000000"/>
+      <EthernetPort name="Port2" priority="0" priorityMode="TAG" schedulingPolicy="Strict Priority" speed="100000000"/>
+      <EthernetPort name="Port3" priority="0" priorityMode="TAG" schedulingPolicy="Strict Priority" speed="100000000"/>
+    </Switch>
+  </Switches>
+  <Links>
+    <Link name="L1">
+      <EthernetPort name="ecu 1.Port1"/>
+      <EthernetPort name="switch 1.Port1"/>
+    </Link>
+    <Link name="L2">
+      <EthernetPort name="ecu 2.Port1"/>
+      <EthernetPort name="switch 1.Port2"/>
+    </Link>
+    <Link name="L3">
+      <EthernetPort name="ecu 3.Port1"/>
+      <EthernetPort name="switch 1.Port3"/>
+    </Link>
+  </Links>
+  <DataFrames>
+    <DataFrame bitSize="3000" name="data 1" offset="0" period="0.0003" priority="0" source="ecu 1">
+      <Path name="data 1-ecu 2">
+        <Node name="ecu 1" sequenceNumber="1"/>
+        <Node name="switch 1" sequenceNumber="2"/>
+        <Node name="ecu 2" sequenceNumber="3"/>
+      </Path>
+    </DataFrame>
+    <DataFrame bitSize="4000" name="data 3" offset="0" period="0.0005" priority="0" source="ecu 3">
+      <Path name="data 3-ecu 2">
+        <Node name="ecu 3" sequenceNumber="1"/>
+        <Node name="switch 1" sequenceNumber="2"/>
+        <Node name="ecu 2" sequenceNumber="3"/>
+      </Path>
+    </DataFrame>
+  </DataFrames>
+  <Vlans>
+    <Vlan name="VLAN1" priority="0" vlanId="1">
+      <EthernetPort name="switch 1.Port1" tagged="true"/>
+      <EthernetPort name="switch 1.Port2" tagged="true"/>
+      <EthernetPort name="switch 1.Port3" tagged="true"/>
+    </Vlan>
+  </Vlans>
+  <Timers>
+    <Timer dataFrame="data 1" name="timer1" targetMacAddress="">
+      <TimeSampler processor="switch 1.Port1.II.Rx"/>
+      <TimeSampler processor="switch 1.Port2.EI.Tx"/>
+    </Timer>
+    <Timer dataFrame="data 3" name="timer3" targetMacAddress="">
+      <TimeSampler processor="switch 1.Port3.II.Rx"/>
+      <TimeSampler processor="switch 1.Port2.EI.Tx"/>
+    </Timer>
+  </Timers>
+</Network>
